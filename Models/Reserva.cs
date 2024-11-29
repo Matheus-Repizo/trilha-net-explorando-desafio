@@ -18,23 +18,22 @@ namespace DesafioProjetoHospedagem.Models
         public void CadastrarHospedes(List<Pessoa> hospedes)
         {
             // TODO: Verificar se a capacidade é maior ou igual ao número de hóspedes sendo recebido
-            // *IMPLEMENTE AQUI*
-            Hospedes = hospedes;
-            try{
-                if (Hospedes.Count() <= Suite.Capacidade)
+
+            Hospedes = hospedes; // Atribui a propriedade Hospedes, a lista hospedes que o método iŕa receber.
+            try{ // Inicializa e delimita um bloco de código, onde uma exceção possa ocorrer.
+                if (Hospedes.Count() <= Suite.Capacidade) // Gera uma condição, verificando se a capacidade da Suite comporta a quantidade de hospedes cadastrados.
                 {
-                    Hospedes.AddRange(hospedes);
+                    Hospedes.AddRange(hospedes); // Se verdadeiro, adiciona os hospedes da lista recebida do método à lista Hospedes do Objeto.
                 }
                 else
                 {
-                // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
-                // *IMPLEMENTE AQUI*
-                     throw new ArgumentException("A suite não comporta a quantidade de hospedes cadastrada");
+                // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido.
+                     throw new ArgumentException("A suite não comporta a quantidade de hospedes cadastrada!"); // Se falso, lança uma exceção,interrompendo o fluxo do código.
                 }
                 }
-                catch (ArgumentException ex)
+                catch (ArgumentException ex) // Trata a exceção gerada.
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.Message); // Mostra no console apenas a mensagem informada na exceção.
                 }    
         }
 
