@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Linq.Expressions;
 
 namespace DesafioProjetoHospedagem.Models
@@ -19,11 +20,11 @@ namespace DesafioProjetoHospedagem.Models
         {
             // TODO: Verificar se a capacidade é maior ou igual ao número de hóspedes sendo recebido
 
-            Hospedes = hospedes; // Atribui a propriedade Hospedes, a lista hospedes que o método iŕa receber.
             try{ // Inicializa e delimita um bloco de código, onde uma exceção possa ocorrer.
-                if (Hospedes.Count() <= Suite.Capacidade) // Gera uma condição, verificando se a capacidade da Suite comporta a quantidade de hospedes cadastrados.
+                if (hospedes.Count() <= Suite.Capacidade) // Gera uma condição, verificando se a capacidade da Suite comporta a quantidade de hospedes cadastrados.
                 {
-                    Hospedes.AddRange(hospedes); // Se verdadeiro, adiciona os hospedes da lista recebida do método à lista Hospedes do Objeto.
+                    Hospedes = hospedes; // Atribui a propriedade Hospedes, a lista hospedes que o método iŕa receber.
+                     // Se verdadeiro, adiciona os hospedes da lista recebida do método à lista Hospedes do Objeto.
                 }
                 else
                 {
@@ -46,8 +47,12 @@ namespace DesafioProjetoHospedagem.Models
         {
             // TODO: Retorna a quantidade de hóspedes (propriedade Hospedes)
             // *IMPLEMENTE AQUI*
+            if (Hospedes == null) {
+                return 0;
+            }
+            
+            return Hospedes.Count();
 
-            return 0;
         }
 
         public decimal CalcularValorDiaria()
