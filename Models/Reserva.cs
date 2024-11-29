@@ -1,3 +1,5 @@
+using System.Linq.Expressions;
+
 namespace DesafioProjetoHospedagem.Models
 {
     public class Reserva
@@ -17,15 +19,23 @@ namespace DesafioProjetoHospedagem.Models
         {
             // TODO: Verificar se a capacidade é maior ou igual ao número de hóspedes sendo recebido
             // *IMPLEMENTE AQUI*
-            if (true)
-            {
-                Hospedes = hospedes;
-            }
-            else
-            {
+            Hospedes = hospedes;
+            try{
+                if (Hospedes.Count() <= Suite.Capacidade)
+                {
+                    Hospedes.AddRange(hospedes);
+                }
+                else
+                {
                 // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
                 // *IMPLEMENTE AQUI*
-            }
+                     throw new ArgumentException("A suite não comporta a quantidade de hospedes cadastrada");
+                }
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }    
         }
 
         public void CadastrarSuite(Suite suite)
@@ -37,6 +47,7 @@ namespace DesafioProjetoHospedagem.Models
         {
             // TODO: Retorna a quantidade de hóspedes (propriedade Hospedes)
             // *IMPLEMENTE AQUI*
+
             return 0;
         }
 
